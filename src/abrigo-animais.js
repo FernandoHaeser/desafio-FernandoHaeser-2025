@@ -8,7 +8,7 @@ class AbrigoAnimais {
     }
     return false;
   }
-  
+
   // Verifica se a pessoa tem todos os brinquedos do animal, sem se importar com a ordem
   temTodosBrinquedos(listaPessoa, favoritos) {
     return favoritos.every(b => listaPessoa.includes(b));
@@ -74,14 +74,25 @@ class AbrigoAnimais {
         apto2 = this.temTodosBrinquedos(listaPessoa2, favoritos);
       }
 
-      // 3. Decisão provisória (sem limite de 3 animais ainda)
-      if (apto1 && !apto2) {
+      // Decisão provisória (sem limite de 3 animais ainda)
+      const gatos = ["Mimi", "Fofo", "Zero"];
+
+      // Se for gato e ambas as pessoas forem aptas, vai para o abrigo
+      if (gatos.includes(animal) && apto1 && apto2) {
+        resultados.push(`${animal} - abrigo`);
+      }
+      // Pessoa 1 apta, respeitando limite de 3 animais
+      else if (apto1 && (!apto2 || contadorPessoa2 >= 3) && contadorPessoa1 < 3) {
         resultados.push(`${animal} - pessoa 1`);
         contadorPessoa1++;
-      } else if (apto2 && !apto1) {
+      }
+      // Pessoa 2 apta, respeitando limite de 3 animais
+      else if (apto2 && (!apto1 || contadorPessoa1 >= 3) && contadorPessoa2 < 3) {
         resultados.push(`${animal} - pessoa 2`);
         contadorPessoa2++;
-      } else {
+      }
+      // Se ninguém cumprir as condições, vai para o abrigo
+      else {
         resultados.push(`${animal} - abrigo`);
       }
     }
