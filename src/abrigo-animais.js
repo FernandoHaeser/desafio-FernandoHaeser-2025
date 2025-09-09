@@ -1,14 +1,9 @@
 // Classe principal do desafio
 class AbrigoAnimais {
 
-  /**
+  /*
    * Verifica se todos os brinquedos favoritos do animal aparecem
    * na lista da pessoa, na ordem correta (subsequência).
-   *
-   * Exemplo:
-   * listaPessoa = ["RATO", "BOLA", "NOVELO"]
-   * favoritos   = ["RATO", "BOLA"]
-   * → true, pois a ordem é respeitada.
    */
   ehSubsequencia(listaPessoa, favoritos) {
     let indice = 0;
@@ -19,7 +14,7 @@ class AbrigoAnimais {
     return false;
   }
 
-  /**
+  /*
    * Verifica se a pessoa tem todos os brinquedos favoritos,
    * sem se importar com a ordem.
    *
@@ -29,18 +24,6 @@ class AbrigoAnimais {
     return favoritos.every(b => listaPessoa.includes(b));
   }
 
-  /**
-   * Função principal do desafio
-   * Recebe 3 strings:
-   *   - brinquedosPessoa1
-   *   - brinquedosPessoa2
-   *   - ordemAnimais (ex: "Rex,Fofo")
-   *
-   * Retorna:
-   *   { lista: ["Rex - pessoa 1", "Fofo - abrigo", ...] }
-   *   ou
-   *   { erro: "Animal inválido" }
-   */
   encontraPessoas(brinquedosPessoa1, brinquedosPessoa2, ordemAnimais) {
 
     // Constantes para validação
